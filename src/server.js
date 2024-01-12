@@ -1,76 +1,25 @@
-const express = require("express");
-const { graphqlHTTP } = require("express-graphql");
-const { buildSchema } = require("graphql");
-const { playerIndex } = require("./fieldResolvers");
+const { ApolloServer, gql } = require("apollo-server");
 
-// Construct a schema using GraphQL schema language
-const schema = buildSchema(`
+// Define your GraphQL schema
+const typeDefs = gql`
   type Query {
     hello: String
-    playerIndex: [Player]
   }
+`;
 
-  type Player {
-    id: ID
-    lastName: String
-    firstName: String
-    playerSlug: String
-    team: NbaPlayerIndexTeamInfo
-    jerseyNumber: String
-    position: String
-    height: String
-    weight: String
-    college: String
-    country: String
-    draft: NbaPlayerIndexDraft
-    active: Boolean
-    headlineStats: NbaPlayerIndexHeadlineStats
-    career: NbaPlayerIndexCareer
-  }
-
-  type NbaPlayerIndexTeamInfo {
-    id: ID
-    slug: String
-    city: String
-    name: String
-    abbreviation: String
-  }
-
-  type NbaPlayerIndexDraft {
-    year: Int
-    round: Int
-    pick: Int
-  }
-
-  type NbaPlayerIndexHeadlineStats {
-    points: Float
-    rebounds: Float
-    assists: Float
-    timeFrame: String
-  }
-
-  type NbaPlayerIndexCareer {
-    fromYear: String
-    toYear: String
-  }
-`);
-
-// The root provides the resolver functions for the API
-const root = {
-  hello: () => {
-    return "Hello World!";
+// Provide resolver functions for your schema fields
+const resolvers = {
+  Query: {
+    hello: () => "Hello world!",
   },
-  playerIndex: playerIndex,
 };
 
-const app = express();
-app.use(
-  "/graphql",
-  graphqlHTTP({
-    schema: schema,
-    rootValue: root,
-    graphiql: true, // Enable GraphiQL interface
-  })
-);
+const server = new ApolloServer({ typeDefs, resolvers });
 
-app.listen(4000, () => console.log("Now browse to localhost:4000/graphql"));
+// Specify the port
+const port = process.env.PORT || 4000;
+
+// Start the server
+server.listen({ port: port }).then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});
