@@ -70,16 +70,8 @@ const playerIndex = async () => {
       };
     });
 
-    console.log("plays", players);
-
-    // console.log("headers", rowSet);
-
-    // console.log("POOP", response.data.resultSets[0].rowSet[0]);
-    const result = response.data.resultSets[0].name;
-    // return response.data; // Assuming the API returns the data in the desired format
     return players;
   } catch (error) {
-    // console.error(error);
     console.log("errr", error);
     return null; // Handle errors appropriately
   }

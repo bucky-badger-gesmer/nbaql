@@ -1,16 +1,12 @@
 const { ApolloServer, gql } = require("apollo-server");
-
-// Define your GraphQL schema
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
+const { typeDefs } = require("./typeDefs");
+const { playerIndex } = require("./fieldResolvers/playerIndex");
 
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
     hello: () => "Hello world!",
+    playerIndex: playerIndex,
   },
 };
 
