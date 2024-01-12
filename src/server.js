@@ -10,7 +10,12 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  introspection: process.env.NODE_ENV !== "production",
+  playground: process.env.NODE_ENV !== "production",
+});
 
 // Specify the port
 const port = process.env.PORT || 4000;
