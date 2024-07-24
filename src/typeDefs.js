@@ -2,8 +2,8 @@ const { gql } = require("apollo-server");
 
 const typeDefs = gql`
   type Query {
-    hello: String
     playerIndex: [Player]
+    franchiseHistory: [FranchiseHistory]
   }
 
   type Player {
@@ -48,6 +48,24 @@ const typeDefs = gql`
   type NbaPlayerIndexCareer {
     fromYear: String
     toYear: String
+  }
+
+  type FranchiseHistory {
+    leagueId: String
+    teamId: ID
+    teamCity: String
+    teamName: String
+    startYear: String
+    endYear: String
+    years: Int
+    games: Int
+    wins: Int
+    losses: Int
+    winPct: Float
+    playoffAppearances: Int
+    divisionTitles: Int
+    conferenceTitles: Int
+    leagueTitles: Int
   }
 `;
 

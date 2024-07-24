@@ -1,12 +1,12 @@
 const { ApolloServer, gql } = require("apollo-server");
 const { typeDefs } = require("./typeDefs");
-const { playerIndex } = require("./fieldResolvers/playerIndex");
+const { playerIndex, franchiseHistory } = require("./fieldResolvers");
 
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
-    hello: () => "Hello world!",
     playerIndex: playerIndex,
+    franchiseHistory: franchiseHistory,
   },
 };
 

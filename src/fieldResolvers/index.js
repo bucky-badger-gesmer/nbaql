@@ -1,3 +1,4 @@
 const { playerIndex } = require("./playerIndex");
+const { franchiseHistory } = require("./franchiseHistory");
 
-module.exports = { playerIndex };
+module.exports = { playerIndex, franchiseHistory };
