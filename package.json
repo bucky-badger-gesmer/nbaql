@@ -2,17 +2,17 @@
   "name": "apollo-graphql-app",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.js",
+  "main": "server.mjs",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "node server.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^3.13.0",
-    "axios": "^1.6.5",
-    "graphql": "^16.8.1"
+    "@apollo/server": "^4.12.1",
+    "axios": "^1.9.0",
+    "graphql": "^16.11.0"
   }
 }
