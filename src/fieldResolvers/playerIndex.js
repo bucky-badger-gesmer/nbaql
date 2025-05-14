@@ -14,7 +14,7 @@ const playerIndex = async () => {
           Height: "",
           Historical: "1",
           LeagueID: "00",
-          Season: "2023-24",
+          Season: "2024-25",
           SeasonType: "Regular Season",
           TeamID: "0",
           Weight: "",
