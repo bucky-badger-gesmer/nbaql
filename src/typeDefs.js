@@ -1,9 +1,8 @@
-const { gql } = require("apollo-server");
-
-const typeDefs = gql`
+const typeDefs = `#graphql
   type Query {
     playerIndex: [Player]
     franchiseHistory: [FranchiseHistory]
+    playerDashboardByYearOverYearCombined(playerId: ID!): [PlayerDashboardByYearOverYearCombined]
   }
 
   type Player {
@@ -66,6 +65,37 @@ const typeDefs = gql`
     divisionTitles: Int
     conferenceTitles: Int
     leagueTitles: Int
+  }
+
+  type PlayerDashboardByYearOverYearCombined {
+    year: String
+    teamId: ID
+    teamAbbreviation: String
+    gamesPlayed: Int
+    wins: Int
+    losses: Int
+    winPct: Float
+    minutes: Float
+    fieldGoalsMade: Float
+    fieldGoalsAttempted: Float
+    fieldGoalPercentage: Float
+    threePointFieldGoalsMade: Float
+    threePointFieldGoalsAttempted: Float
+    threePointFieldGoalPercentage: Float
+    freeThrowsMade: Float
+    freeThrowsAttempted: Float
+    freeThrowPercentage: Float
+    offensiveRebounds: Float
+    defensiveRebounds: Float
+    rebounds: Float
+    assists: Float
+    turnovers: Float
+    steals: Float
+    blocks: Float
+    personalFouls: Float
+    plusMinus: Float
+    doubleDoubles: Float
+    tripleDoubles: Float
   }
 `;
 
